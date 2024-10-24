@@ -101,6 +101,7 @@ class KeywordQueryEventListener(EventListener):
     def on_event(self, event, extension):
         query = event.get_argument() or str()
         control = query
+        print(query)
         if len(query.strip()) == 0:
             # The extension has just been triggered, let's initialize the windows list.
             # (Or we delete all previously typed characters, but we can safely ignore that case)
