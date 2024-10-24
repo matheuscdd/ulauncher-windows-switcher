@@ -96,12 +96,9 @@ class WindowSwitcherExtension(Extension):
         if not os.path.exists(CACHE_DIR):
             os.makedirs(CACHE_DIR)
 
-control = None
 class KeywordQueryEventListener(EventListener):
     def on_event(self, event, extension):
         query = event.get_argument() or str()
-        control = query
-        print(query)
         if len(query.strip()) == 0:
             # The extension has just been triggered, let's initialize the windows list.
             # (Or we delete all previously typed characters, but we can safely ignore that case)
@@ -126,17 +123,7 @@ class ItemEnterEventListener(EventListener):
                 previous_selection = extension.selection
                 extension.previous_selection = previous_selection
                 extension.selection = window.get_xid()
-                # activate(window)
-                print(event.get_data())
-                # pids =  subprocess.Popen(f'xdotool search --onlyvisible "{control}"',
-                #     shell=True,
-                #     stdout=subprocess.PIPE
-                # ).stdout.read().decode()
-                # print(control)
-                # pid_list = pids.splitlines()
-                # print(pid_list)
-                # pid = str(pid_list[0])
-                # os.system('xdotool windowactivate ' + pid)
+                os.system(f'xdotool windowactivate {event.get_data()}')
         Wnck.shutdown()
 
 
