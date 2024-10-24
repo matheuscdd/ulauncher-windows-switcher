@@ -131,8 +131,9 @@ class ItemEnterEventListener(EventListener):
                     shell=True,
                     stdout=subprocess.PIPE
                 ).stdout.read().decode()
-
+                print(control)
                 pid_list = pids.splitlines()
+                print(pid_list)
                 pid = str(pid_list[0])
                 os.system('xdotool windowactivate ' + pid)
         Wnck.shutdown()
