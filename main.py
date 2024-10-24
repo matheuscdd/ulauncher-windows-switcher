@@ -127,16 +127,16 @@ class ItemEnterEventListener(EventListener):
                 extension.previous_selection = previous_selection
                 extension.selection = window.get_xid()
                 # activate(window)
-                
-                pids =  subprocess.Popen(f'xdotool search --onlyvisible "{control}"',
-                    shell=True,
-                    stdout=subprocess.PIPE
-                ).stdout.read().decode()
-                print(control)
-                pid_list = pids.splitlines()
-                print(pid_list)
-                pid = str(pid_list[0])
-                os.system('xdotool windowactivate ' + pid)
+                print(event.get_data())
+                # pids =  subprocess.Popen(f'xdotool search --onlyvisible "{control}"',
+                #     shell=True,
+                #     stdout=subprocess.PIPE
+                # ).stdout.read().decode()
+                # print(control)
+                # pid_list = pids.splitlines()
+                # print(pid_list)
+                # pid = str(pid_list[0])
+                # os.system('xdotool windowactivate ' + pid)
         Wnck.shutdown()
 
 
