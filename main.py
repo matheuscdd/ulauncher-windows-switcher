@@ -123,7 +123,7 @@ class ItemEnterEventListener(EventListener):
                 previous_selection = extension.selection
                 extension.previous_selection = previous_selection
                 extension.selection = window.get_xid()
-                activate(window)
+                # activate(window)
                 os.system('xdotool windowactivate ' + window.get_xid())
         Wnck.shutdown()
 
